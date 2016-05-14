@@ -2,21 +2,23 @@
 %{!?scl:%global pkg_name %{name}}
 %{?java_common_find_provides_and_requires}
 
+%global baserelease 1
+
 %global eclipse_dropin   %{_datadir}/eclipse/dropins
 
 # Release has not been tagged, but this commit comprised the release
-%global git_version R3_10_0
+%global git_version R3_10_1
 
 Name:      %{?scl_prefix}eclipse-gef
-Version:   3.10.0
+Version:   3.10.1
 
-Release:   1.1.bs2%{?dist}
+Release:   1.%{baserelease}%{?dist}
 Summary:   Graphical Editing Framework (GEF) Eclipse plug-in
 Group:     System Environment/Libraries
 License:   EPL
 URL:       http://www.eclipse.org/gef/
 
-Source0:   http://git.eclipse.org/c/gef/org.eclipse.gef.git/snapshot/R3_10_0.tar.xz
+Source0:   http://git.eclipse.org/c/gef/org.eclipse.gef.git/snapshot/R3_10_1.tar.xz
 
 BuildArch:        noarch
 
@@ -93,8 +95,14 @@ find -name *.class -exec rm -rf {} \;
 %files examples -f .mfiles-examples
 
 %changelog
-* Mon Jul 06 2015 Mat Booth <mat.booth@redhat.com> - 3.10.0-1.1
+* Tue Jan 12 2016 Mat Booth <mat.booth@redhat.com> - 3.10.1-1.1
 - Import latest from Fedora
+
+* Mon Sep 28 2015 Sopot Cela <scela@redhat.com> - 3.10.1-1
+- Updated to 3.10.1-1 (Mars SR1)
+
+* Mon Sep 14 2015 Roland Grunberg <rgrunber@redhat.com> - 3.10.0-2
+- Rebuild as an Eclipse p2 Droplet.
 
 * Mon Jun 22 2015 Alexander Kurtakov <akurtako@redhat.com> 3.10.0-1
 - Update to upstream 3.10.0 release.
